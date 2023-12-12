@@ -1,26 +1,32 @@
-// Importing the 'http' module for creating an HTTP server.
+// Import the 'http' module to create an HTTP server.
 const http = require("http");
-// Function to handle requests to the root ("/") endpoint.
-function index(request, response) {
-  // Setting the HTTP response status code to 200 (OK).
-  response.writeHead(200);
-  // Sending the response content as "Node Routing".
-  response.end("Node Routing");
-}
-function aboutUs(request, response) {
-  response.end("About Us");
-}
-// Creating an HTTP server and defining a callback function to handle requests.
+
+// Define an object 'routes' to store different routes and their corresponding functions.
+const routes = {
+  // Define the root route ("/") and its associated function 'index'.
+  "/": function index(request, response) {
+    // Send a 200 OK status code in the response header.
+    response.writeHead(200);
+
+    // End the response with the message "Node Routing".
+    response.end("Node Routing");
+  },
+
+  // Define the "/aboutUs" route and its associated function 'aboutUs'.
+  "/aboutUs": function aboutUs(request, response) {
+    // End the response with the message "About Us".
+    response.end("About Us");
+  },
+};
+
+// Create an HTTP server using the 'createServer' method.
 http
   .createServer(function (req, res) {
-    // Checking if the requested URL is the root ("/") endpoint.
-    if (req.url === "/") {
-      // Invoking the 'index' function to handle the request.
-      return index(req, res);
-    }
-    if (req.url === "/aboutUs") {
-      return aboutUs(req, res);
+    // Check if the requested URL exists as a key in the 'routes' object.
+    if (req.url in routes) {
+      // If the route exists, call the corresponding function from the 'routes' object.
+      return routes[req.url](req, res);
     }
   })
-  // Listening on port 8000 for incoming HTTP requests.
+  // Make the server listen on port 8000.
   .listen(8000);
