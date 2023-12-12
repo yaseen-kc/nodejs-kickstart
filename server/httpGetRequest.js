@@ -14,9 +14,9 @@ http.get("http://api.open-notify.org/astros.json", (resp) => {
   // Event listener for the 'end' event, triggered when the response is complete
   resp.on("end", () => {
     // Parsing the received JSON data
-    let jsondata = JSON.parse(data);
+    let jsonData = JSON.parse(data);
 
     // Logging the parsed JSON data to the console
-    console.log(jsondata);
+    console.log(jsonData);
   });
 });
