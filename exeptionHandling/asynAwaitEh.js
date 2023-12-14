@@ -2,9 +2,9 @@
 async function someFunction() {
     try {
         // Using 'await' to asynchronously execute 'someOtherFunction'.
-        await someOtherFunction();
+        await someOtherFunction()
     } catch (err) {
         // Catching and handling errors if 'someOtherFunction' throws an error.
-        console.error(err.message);
+        console.error(err.message)
     }
 }
