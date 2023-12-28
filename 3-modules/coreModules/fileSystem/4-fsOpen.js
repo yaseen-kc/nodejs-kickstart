@@ -3,12 +3,12 @@ var fs = require("fs");
 var buf = new Buffer.alloc(1024);
 
 // openFile
-fs.open('sample.txt', 'r+', function (err, fd) {
-    if (err) {
-        console.error(err);
-    }
-    console.log("File Opened");
-})
+// fs.open('sample.txt', 'r+', function (err, fd) {
+//     if (err) {
+//         console.error(err);
+//     }
+//     console.log("File Opened");
+// })
 
 // readFile
 fs.open('sample.txt', 'r+', function (err, fd) {
